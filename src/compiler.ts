@@ -1,4 +1,4 @@
-import { Collection, CollectionsMetadata } from './metadata'
+import { CollectionClass, CollectionsMetadata } from './metadata'
 
 export interface Line {
   0: number
@@ -9,7 +9,7 @@ export interface Line {
 const INDENT = 2
 const NO_INDENT = 0
 
-export function compile(root: Collection[], metadataMap: CollectionsMetadata) {
+export function compile(root: CollectionClass[], metadataMap: CollectionsMetadata) {
   let code: Line[] = []
   code.push(
     [NO_INDENT, 'service cloud.firestore {'],
@@ -43,7 +43,7 @@ export function shift(code: Line[], pow: number = 1): Line[] {
   return code
 }
 
-export function compileCollection(collection: Collection, metadataMap: CollectionsMetadata) {
+export function compileCollection(collection: CollectionClass, metadataMap: CollectionsMetadata) {
   let metadata = metadataMap.get(collection)
   let code: Line[] = []
   code.push([NO_INDENT, `/${metadata.name}/{${metadata.idName}} {`])

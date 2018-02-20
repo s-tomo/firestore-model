@@ -1,0 +1,7 @@
+{
+  "editor.tabSize": 2,
+  "files.eol": "\n",
+  "tslint.configFile": "tslint.json",
+  "typescript.format.enable": true,
+  "editor.formatOnSave": true
+}

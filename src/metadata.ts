@@ -17,11 +17,11 @@ export interface FieldMetadata {
 
 const metadataKey = Symbol('firestore')
 
-export function has(collection: CollectionClass) {
+export function hasMetadata(collection: CollectionClass) {
   return Reflect.hasMetadata(metadataKey, collection)
 }
 
-export function get(collection: CollectionClass) {
+export function getMetadata(collection: CollectionClass) {
   return Reflect.getMetadata(metadataKey, collection)
 }
 
@@ -34,10 +34,6 @@ export function inject(collection: CollectionClass, path, value) {
   let ob = metadata
   let nodes = path.split('.')
   let key = nodes.pop()
-  let isArray = key === '*'
-  if (isArray) {
-    key = nodes.pop()
-  }
   for (let node of nodes) {
     if (!ob[node]) {
       ob[node] = {}
@@ -46,14 +42,5 @@ export function inject(collection: CollectionClass, path, value) {
     }
     ob = ob[node]
   }
-  if (isArray) {
-    if (!ob[key]) {
-      ob[key] = []
-    } else if (!(ob[key] instanceof Array)) {
-      throw new Error
-    }
-    ob[key].push(value)
-  } else {
-    ob[key] = value
-  }
+  ob[key] = value
 }

@@ -1,6 +1,6 @@
 import 'reflect-metadata'
 
-export type CollectionClass = { new() }
+export interface CollectionClass { new() }
 
 export type CollectionsMetadata = Map<CollectionClass, CollectionMetadata>
 

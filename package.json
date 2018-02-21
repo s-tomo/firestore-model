@@ -1,12 +1,14 @@
 {
   "name": "firestore-model",
   "version": "0.1-alpha",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "author": "s-tomo",
   "license": "MIT",
   "scripts": {
     "test": "mocha -r espower-typescript/guess",
-    "build": "tslint src/**/**.ts"
+    "build": "tslint src/**/**.ts && tsc -p tsconfig.build.json",
+    "postinstall": "tsc -p tsconfig.build.json"
   },
   "dependencies": {
     "pluralize": "^7.0.0",

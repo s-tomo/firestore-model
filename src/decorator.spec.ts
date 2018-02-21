@@ -35,7 +35,7 @@ describe('decorator module', () => {
   })
 
   it('should #sub throws exception when sub collection is not injected', () => {
-    let collection = new Collection, key = 'sub', Sub = class Sub { }
+    let collection = new Collection, key = 'sub', Sub = class { }
     Reflect.defineMetadata('design:type', Sub, collection, key)
     assert.throws(() => {
       deco.sub()(collection, key)
@@ -43,7 +43,7 @@ describe('decorator module', () => {
   })
 
   it('should #sub append sub collection into subCollections list', () => {
-    let collection = new Collection, key = 'sub', Sub = class Sub { }
+    let collection = new Collection, key = 'sub', Sub = class { }
     Reflect.defineMetadata('design:type', Sub, collection, key)
     deco.collection()(Sub)
     deco.sub()(collection, key)

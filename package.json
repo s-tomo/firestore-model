@@ -1,6 +1,6 @@
 {
   "name": "firestore-model",
-  "version": "0.1-alpha",
+  "version": "0.1.0-alpha",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "author": "s-tomo",
